@@ -3,7 +3,7 @@ package com.example.employeepayroll.dto;
 import lombok.Data;
 
 public @Data
-public class ResponseDTO {
+class ResponseDTO {
 
     private String message;
     private Object data;
