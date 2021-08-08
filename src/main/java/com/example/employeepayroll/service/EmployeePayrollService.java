@@ -9,29 +9,34 @@ import java.util.List;
 
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
+    private List<EmployeePayrollData> employeePayrollDataList = new ArrayList<>();
     @Override
     public List<EmployeePayrollData> getEmployeePayrollData(){
-        List<EmployeePayrollData> employeePayrollDataList = new ArrayList<>();
-        employeePayrollDataList.add(new EmployeePayrollData(1,new EmployeeDto("Anuj",4000000)));
         return employeePayrollDataList;
     }
 
     @Override
     public EmployeePayrollData getEmployeePayrollDataById(int id){
-       return  new EmployeePayrollData(1, new EmployeeDto("Anuj", 50000));
+       return employeePayrollDataList.get(id -1);
     }
     @Override
     public EmployeePayrollData createEmployeePayrollData(EmployeeDto employeeDto){
-        return new EmployeePayrollData(1, employeeDto);
+        EmployeePayrollData employeePayrollData =  new EmployeePayrollData(employeePayrollDataList.size() + 1, employeeDto);
+        this.employeePayrollDataList.add(employeePayrollData);
+        return employeePayrollData;
     }
 
     @Override
     public EmployeePayrollData updateEmployeePayrollData(int id, EmployeeDto employeeDto){
-        return new EmployeePayrollData(id, employeeDto);
+        EmployeePayrollData employeePayrollData = this.getEmployeePayrollDataById(id);
+        employeePayrollData.setName(employeeDto.getName());
+        employeePayrollData.setSalary(employeeDto.getSalary());
+        this.employeePayrollDataList.set(id-1,employeePayrollData);
+        return employeePayrollData;
     }
 
     @Override
     public void deleteEmployeePayrollData(int id){
-
+        employeePayrollDataList.remove(id-1);
     }
 }
