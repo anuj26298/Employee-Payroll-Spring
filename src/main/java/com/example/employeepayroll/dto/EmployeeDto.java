@@ -1,7 +1,15 @@
 package com.example.employeepayroll.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
 public class EmployeeDto {
+    @NotEmpty(message = "Name Cannot be empty")
+    @Pattern(regexp = "^[A-Z][a-zA-Z\\s]{2,}$",message = "Employee name invalid")
     private String name;
+
+    @Min(value = 1000, message = "salary should be greater than 1000")
     private long salary;
 
     public EmployeeDto(String name, long salary) {
