@@ -1,34 +1,34 @@
 package com.example.employeepayroll.dto;
 
 public class EmployeeDto {
-    private String firstName;
-    private double salary;
+    private String name;
+    private long salary;
 
-    public EmployeeDto(String firstName, double salary) {
-        this.firstName = firstName;
+    public EmployeeDto(String name, long salary) {
+        this.name = name;
         this.salary = salary;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getSalary() {
+    public long getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(long salary) {
         this.salary = salary;
     }
 
     @Override
     public String toString() {
         return "EmployeeDto{" +
-                "firstName='" + firstName + '\'' +
+                "name='" + name + '\'' +
                 ", salary=" + salary +
                 '}';
     }
